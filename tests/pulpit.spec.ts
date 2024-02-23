@@ -53,9 +53,7 @@ test.describe('Pulpit test', () => {
     await expect(page.locator('#show_messages')).toHaveText(expectedMessage);
   });
 
-  test.only('correct balance after successful mobile top-up', async ({
-    page,
-  }) => {
+  test('correct balance after successful mobile top-up', async ({ page }) => {
     // Arrange
     const reciverPhoneNumber = '500 xxx xxx';
     const transferAmount = '50';
