@@ -52,4 +52,27 @@ test.describe('Pulpit test', () => {
     //Assert
     await expect(page.locator('#show_messages')).toHaveText(expectedMessage);
   });
+
+  test.only('correct balance after successful mobile top-up', async ({
+    page,
+  }) => {
+    // Arrange
+    const reciverPhoneNumber = '500 xxx xxx';
+    const transferAmount = '50';
+    const initialBalance = await page.locator('#money_value').innerText();
+    const expectedBalance = Number(initialBalance) - Number(transferAmount);
+
+    //Act
+
+    await page
+      .locator('#widget_1_topup_receiver')
+      .selectOption(reciverPhoneNumber);
+    await page.locator('#widget_1_topup_amount').fill(transferAmount);
+    await page.locator('#widget_1_topup_agreement').click();
+    await page.locator('#execute_phone_btn').click();
+    await page.getByTestId('close-button').click();
+
+    //Assert
+    await expect(page.locator('#money_value')).toHaveText(`${expectedBalance}`);
+  });
 });
