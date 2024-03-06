@@ -1,7 +1,10 @@
 import { Page } from 'playwright-core';
+import { SideMenuComponent } from '../components/side-menu.component';
 
 export class PaymentPage {
   constructor(private page: Page) {}
+
+  sideMenu = new SideMenuComponent(this.page);
 
   transferReceiver = this.page.getByTestId('transfer_receiver');
   formAccountTo = this.page.getByTestId('form_account_to');
