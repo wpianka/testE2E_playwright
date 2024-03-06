@@ -16,4 +16,5 @@ export class PulpitPage {
   phoneButton = this.page.locator('#execute_phone_btn');
 
   moneyValue = this.page.locator('#money_value');
+  userNameText = this.page.getByTestId('user-name');
 }

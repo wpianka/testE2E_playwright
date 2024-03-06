@@ -26,7 +26,6 @@ test.describe('Pulpit test', () => {
     const expectedMessage = `Przelew wykonany! ${expectedTramsferReciver} - ${transferAmount},00PLN - ${transferTitle}`;
 
     //Act
-
     const pulpitPage = new PulpitPage(page);
 
     await pulpitPage.transferReceiver.selectOption(reciverId);
@@ -66,7 +65,6 @@ test.describe('Pulpit test', () => {
     const expectedBalance = Number(initialBalance) - Number(transferAmount);
 
     //Act
-
     const pulpitPage = new PulpitPage(page);
 
     await pulpitPage.topupReceiver.selectOption(reciverPhoneNumber);
