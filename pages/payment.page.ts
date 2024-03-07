@@ -12,4 +12,16 @@ export class PaymentPage {
   formButton = this.page.getByRole('button', { name: 'wykonaj przelew' });
   closeButton = this.page.getByTestId('close-button');
   showMessages = this.page.locator('#show_messages');
+
+  async payment(
+    transferReceiver: string,
+    transferAccount: string,
+    transferAmount: string,
+  ): Promise<void> {
+    await this.transferReceiver.fill(transferReceiver);
+    await this.formAccountTo.fill(transferAccount);
+    await this.formAmount.fill(transferAmount);
+    await this.formButton.click();
+    await this.closeButton.click();
+  }
 }
